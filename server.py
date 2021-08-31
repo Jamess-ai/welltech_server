@@ -14,7 +14,7 @@ from PIL import Image
 PORT = 5050
 SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
-BUF_SIZE = 4194304                          # Buffer size 4MB
+BUF_SIZE = 4194304                              # Buffer size 4MB
 DISCONNECT_MESSAGE = "!DISCONNECT"
 PREDICT_RESULT_LOC = 'D:\@IBM - AI\i.am-vitalize - AI modules\Final Project\Server\server_predict_result.txt'
 CUST_IMG_LOC = 'D:\@IBM - AI\i.am-vitalize - AI modules\Final Project\Server\server_cust_image.jpg'
@@ -34,11 +34,11 @@ def handle_client(conn, addr):
 
     image_file = open(CUST_IMG_LOC, "wb")       # opens a file and returns a file object 
                                                 # mode: write & to be handled: binary
-    image_chunk = conn.recv(BUF_SIZE)                
+    image_chunk = conn.recv(BUF_SIZE)  
     print("server received customer image from client.")
     image_file.write(image_chunk)
     image_file.close()
-
+    
     emo_detector = FER(mtcnn=True)
 
     test_image = plt.imread(CUST_IMG_LOC)
